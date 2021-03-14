@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&family=Overpass:wght@600&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <style>
     * {
       margin: 0;
@@ -78,7 +79,7 @@
 
     .content {
       display: flex;
-      width: 50%;
+      width: 80%;
       margin: auto;
       min-height: 70vh;
       align-items: center;
@@ -115,7 +116,8 @@
   <header>
     <div class="nav-bar">
       <div class="navlogo">
-        <a href="LandingPage.html"><img src="../Pictures/UOWLOG.webp"></a>
+        <a href="LandingPage.html"><img
+            src="https://www.uowmkdu.edu.my/wp-content/themes/kdu/img/UOWMKDU-logb.png.webp"></a>
       </div>
       <div class="navmenu">
         <ul>
@@ -132,11 +134,127 @@
     <section class="content">
       <div class="text">
         <h1>Experiments</h1>
+        <h3>Enter the following variables to calculate the amount of power produced by the wind turbine</h3>
+        <div>
+          <div class="container">
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="wSpeed" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Wind Speed:</label>
 
+              <select name="wSpeed" id="wSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="5">5 m/s</option>
+                <option value="10">10 m/s</option>
+                <option value="15">15 m/s</option>
+                <option value="20">20 m/s</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="pSpeed" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Propellor Angular Speed:</label>
+
+              <select name="pSpeed" id="pSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="10">10 m/s</option>
+                <option value="15">15 m/s</option>
+                <option value="20">20 m/s</option>
+                <option value="25">25 m/s</option>
+                <option value="30">30 m/s</option>
+                <option value="35">35 m/s</option>
+                <option value="40">40 m/s</option>
+                <option value="45">45 m/s</option>
+                <option value="50">50 m/s</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="length" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Length of Blades:</label>
+
+              <select name="length" id="length" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="30">30 m</option>
+                <option value="50">50 m</option>
+                <option value="80">80 m</option>
+                <option value="100">100 m</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="numBlades" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Number of Blades:</label>
+
+              <select name="numBlades" id="numBlades" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="airDensity" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Pick Region of Operation:</label>
+
+              <select name="airDensity" id="airDensity" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="1.23">Land</option>
+                <option value="1.21">Offshore</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" onclick="sum()">Test</button>
+          <br>
+        </div>
+        <div id="area" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="speed" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="tip" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="coef" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="pow" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
       </div>
     </section>
   </main>
 
+  <script>
+    function sum() {
+      var ad = document.getElementById('airDensity');
+      var airDensity = ad.value;
+      var wd = document.getElementById('wSpeed');
+      var wSpeed = wd.value;
+      var pd = document.getElementById('pSpeed');
+      var pSpeed = pd.value;
+      var lh = document.getElementById('length');
+      var length = lh.value;
+      var ns = document.getElementById('numBlades');
+      var numBlades = ns.value;
+      var area = 3.14159265 * Number(length) * Number(length);
+      var speed = Number(pSpeed) * Number(length);
+      var tip = Number(speed) / Number(wSpeed);
+      var cd = (2 * Number(length)) / ((1/2) * Number(airDensity) * Number(area) * (Number(wSpeed) - (Number(wSpeed) - 2)) * (Number(wSpeed) - (Number(wSpeed) - 2)));
+      var coef = Number(cd) * (Number(tip) - (2 * Number(tip) * Number(tip)) + (Number(tip) * Number(tip * Number(tip))));
+      var pow = ((1 / 2) * Number(coef) * Number(airDensity) * Number(area) * Number(wSpeed) * Number(wSpeed) * Number(wSpeed)) / 1000;
+      var D = area.toFixed(2);
+      var E = speed.toFixed(2);
+      var F = tip.toFixed(1);
+      var G = coef.toFixed(2);
+      var H = pow.toFixed(2);
+      document.getElementById('area').innerHTML = 'Rotor Swept Area = ' + D + " " + 'm^2';
+      document.getElementById('speed').innerHTML = 'Linear speed of the propellor = ' + E + " " + 'm/s';
+      document.getElementById('tip').innerHTML = 'Tip Speed Ratio = ' + F;
+      document.getElementById('coef').innerHTML = 'Wind Turbine Coefficient = ' + G;
+      document.getElementById('pow').innerHTML = 'Power Of The Turbine = ' + H + " " + 'kW';
+    }
+  </script>
 </body>
 
 </html>

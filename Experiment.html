@@ -170,16 +170,18 @@
 
               <select name="pSpeed" id="pSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
                 <option value="" selected disabled>--Please choose an option--</option>
-                <option value="1">1 rad/s</option>
-                <option value="2">2 rad/s</option>
-                <option value="3">3 rad/s</option>
-                <option value="4">4 rad/s</option>
-                <option value="5">5 rad/s</option>
-                <option value="6">6 rad/s</option>
-                <option value="7">7 rad/s</option>
-                <option value="8">8 rad/s</option>
-                <option value="9">9 rad/s</option>
-                <option value="10">10 rad/s</option>
+                <option value="0.1">0.1 rad/s</option>
+                <option value="0.3">0.3 rad/s</option>
+                <option value="0.5">0.5 rad/s</option>
+                <option value="0.7">0.7 rad/s</option>
+                <option value="0.9">0.9 rad/s</option>
+                <option value="1.0">1.0 rad/s</option>
+                <option value="1.1">1.1 rad/s</option>
+                <option value="1.3">1.3 rad/s</option>
+                <option value="1.5">1.5 rad/s</option>
+                <option value="1.7">1.7 rad/s</option>
+                <option value="1.9">1.9 rad/s</option>
+                <option value="2.0">2.0 rad/s</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -355,12 +357,26 @@
       var length = lh.value;
       var ns = document.getElementById('numBlades');
       var numBlades = ns.value;
+      var lt = document.getElementById('lift');
+      var lift = lt.value;
+      var dg = document.getElementById('drag');
+      var drag = dg.value;
+      var ld = document.getElementById('locwSpeed');
+      var locwSpeed = ld.value;
+      var ht = document.getElementById('height');
+      var height = ht.value;
+      var dr = document.getElementById('diameter');
+      var diameter = dr.value;
+      var ml = document.getElementById('material');
+      var material = ml.value;
+
+
       var area = 3.14159265 * Number(length) * Number(length);
       var speed = Number(pSpeed) * Number(length);
-      var tip = Number(speed) / Number(wSpeed);
-      var cd = (2 * Number(length)) / ((1/2) * Number(airDensity) * Number(area) * (Number(wSpeed) - (Number(wSpeed) - 2)) * (Number(wSpeed) - (Number(wSpeed) - 2)));
+      var tip = Number(speed) / Number(locwSpeed);
+      var cd = (2 * Number(length)) / ((1/2) * Number(airDensity) * Number(area) * (Number(locwSpeed) - (Number(locwSpeed) - 2)) * (Number(locwSpeed) - (Number(locwSpeed) - 2)));
       var coef = Number(cd) * (Number(tip) - (2 * Number(tip) * Number(tip)) + (Number(tip) * Number(tip * Number(tip))));
-      var pow = ((1 / 2) * Number(coef) * Number(airDensity) * Number(area) * Number(wSpeed) * Number(wSpeed) * Number(wSpeed)) / 1000;
+      var pow = ((1 / 2) * Number(coef) * Number(airDensity) * Number(area) * Number(locwSpeed) * Number(locwSpeed) * Number(locwSpeed)) / 1000;
       var J = area.toFixed(2);
       var K = speed.toFixed(2);
       var F = tip.toFixed(1);
@@ -372,8 +388,7 @@
       document.getElementById('coef').innerHTML = 'Wind Turbine Coefficient = ' + G;
       document.getElementById('pow').innerHTML = 'Power Of The Turbine = ' + H + " " + 'kW';
       
-      var ml = document.getElementById('material');
-      var material = ml.value;
+      
       if (material == 1)
       {
         var ultimate_stress = 2048.5;
@@ -411,10 +426,10 @@
         var E = 70;
       }
 
-      var A_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(wSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(ultimate_stress) * (0.066 * Number(length) + 0.082)));
+      var A_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(locwSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(ultimate_stress) * (0.066 * Number(length) + 0.082)));
       var A_edge = ((Number(density) * 9.81 * Math.pow(Number(length), 2)) / ((Number(ultimate_stress) * (0.13 * Number(length) + 0.082)) - (Number(density) * 9.81 * Math.pow(Number(length), 2)))) * Number(A_flap);
       var A_blade = 2 * (Number(A_flap) + Number(A_edge));
-      var x_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(wSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(A_flap) * (0.066 * Number(length) + 0.082)));
+      var x_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(locwSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(A_flap) * (0.066 * Number(length) + 0.082)));
       var x_edge = (1 / 2) * ((Number(density) * Number(A_blade) * 9.81 * Math.pow(Number(length), 2)) / (Number(ultimate_stress) * (0.13 * Number(length) + 0.082)))
       
       var sfactor_flap = Number(ultimate_stress) / Number(x_flap);
@@ -425,25 +440,16 @@
       document.getElementById('sfactor_flap').innerHTML = 'Material Safety Factor_Flap = ' + I;
       document.getElementById('sfactor_edge').innerHTML = 'Material Safety Factor_Edge = ' + O;
 
-      var lt = document.getElementById('lift');
-      var lift = lt.value;
-      var dg = document.getElementById('drag');
-      var drag = dg.value;
-      var ld = document.getElementById('locwSpeed');
-      var locwSpeed = ld.value;
-      var ht = document.getElementById('height');
-      var height = ht.value;
-      var dr = document.getElementById('diameter');
-      var diameter = dr.value;
+      
 
-      var local_tip_ratio = 0.55 * ((Number(pSpeed) * Number(length)) / Number(wSpeed));
+      var local_tip_ratio = 0.55 * ((Number(pSpeed) * Number(length)) / Number(locwSpeed));
       var hu = 1 / Number(local_tip_ratio);
       var Beta = 90 - (2/3 * Math.atan(Number(hu)));
       var copt = (2 * 3.14159 * Number(length) * 8 * Number(wSpeed)) / (Number(numBlades) * 9 * Number(lift) * Number(tip) * Number(locwSpeed));
       var hash = 0.775 * ((Number(numBlades) * Number(copt)) / (1.1 * 3.14159 * Number(length)));
       var cos = Math.cos(Number(Beta));
       var alpha = 1 + ((4 * Math.pow(Number(cos), 2)) / (Number(hash) * Number(lift) * Math.sin(Number(Beta))));
-      var W = (Number(wSpeed) * (1 - Number(alpha))) / Math.cos(Number(Beta));
+      var W = (Number(locwSpeed) * (1 - Number(alpha))) / Math.cos(Number(Beta));
       var L = 0.213 * Number(lift) * Number(airDensity) * Math.pow(Number(W), 2) * Number(copt) * Number(length);
       var D = 0.213 * Number(drag) * Number(airDensity) * Math.pow(Number(W), 2) * Number(copt) * Number(length);
       
@@ -451,11 +457,11 @@
       var p = -1 * Number(numBlades) / Number(o);
       var q = Math.exp(Number(p));
       var Q = (2 / 3.14159) * Math.acos(Number(q));
-      var Fx = 0.55 * Number(Q) * Number(airDensity) * Math.pow(Number(wSpeed), 2) * ((4 * Number(alpha)) * (1 - Number(alpha))) * 3.14159 * Math.pow(Number(length), 2);
+      var Fx = 0.55 * Number(Q) * Number(airDensity) * Math.pow(Number(locwSpeed), 2) * ((4 * Number(alpha)) * (1 - Number(alpha))) * 3.14159 * Math.pow(Number(length), 2);
       var max_tower = Number(Fx) / (Number(height) * Number(diameter)); 
       var tower_sf = Number(ultimate_stress) / Number(max_tower);
       var ahash = (1 - (3 * Number(alpha))) / ((4 * Number(alpha)) -1);
-      var T = 2.2 * Number(Q) * Number(ahash) * (1 - Number(alpha)) * Number(airDensity) * Number(wSpeed) * Number(pSpeed) * Math.pow(Number(length), 4) * 3.14159;
+      var T = 2.2 * Number(Q) * Number(ahash) * (1 - Number(alpha)) * Number(airDensity) * Number(locwSpeed) * Number(pSpeed) * Math.pow(Number(length), 4) * 3.14159;
 
       var r = local_tip_ratio.toFixed(2);
       var s = W.toFixed(2);

@@ -138,12 +138,29 @@
         <div>
           <div class="container">
             <div class="col-lg-6 col-md-6" style="padding:5px;">
-              <label for="wSpeed" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Wind Speed:</label>
+              <label for="wSpeed" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Design Wind Speed:</label>
 
               <select name="wSpeed" id="wSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
                 <option value="" selected disabled>--Please choose an option--</option>
+                <option value="2">2 m/s</option>
+                <option value="3">3 m/s</option>
                 <option value="5">5 m/s</option>
                 <option value="10">10 m/s</option>
+                <option value="12">12 m/s</option>
+                <option value="15">15 m/s</option>
+                <option value="20">20 m/s</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="locwSpeed" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Local Wind Speed:</label>
+
+              <select name="locwSpeed" id="locwSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="2">2 m/s</option>
+                <option value="3">3 m/s</option>
+                <option value="5">5 m/s</option>
+                <option value="10">10 m/s</option>
+                <option value="12">12 m/s</option>
                 <option value="15">15 m/s</option>
                 <option value="20">20 m/s</option>
               </select>
@@ -153,15 +170,64 @@
 
               <select name="pSpeed" id="pSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
                 <option value="" selected disabled>--Please choose an option--</option>
-                <option value="10">10 m/s</option>
-                <option value="15">15 m/s</option>
-                <option value="20">20 m/s</option>
-                <option value="25">25 m/s</option>
-                <option value="30">30 m/s</option>
-                <option value="35">35 m/s</option>
-                <option value="40">40 m/s</option>
-                <option value="45">45 m/s</option>
-                <option value="50">50 m/s</option>
+                <option value="5">5 rpm</option>
+                <option value="10">10 rpm</option>
+                <option value="15">15 rpm</option>
+                <option value="20">20 rpm</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="material" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Material:</label>
+
+              <select name="material" id="material" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="1">Glass Fiber Composites</option>
+                <option value="2">Carbon Fiber Composites</option>
+                <option value="3">Resin Epoxy Composites</option>
+                <option value="4">Steel</option>
+                <option value="5">Aluminum</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="lift" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Lift Coefficient:</label>
+
+              <select name="lift" id="lift" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="0.1">0.1</option>
+                <option value="0.2">0.2</option>
+                <option value="0.3">0.3</option>
+                <option value="0.4">0.4</option>
+                <option value="0.5">0.5</option>
+                <option value="0.6">0.6</option>
+                <option value="0.7">0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="0.9">0.9</option>
+                <option value="1">1.0</option>
+                <option value="1.1">1.1</option>
+                <option value="1.2">1.2</option>
+                <option value="1.3">1.3</option>
+                <option value="1.4">1.4</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="drag" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Drag Coefficient:</label>
+
+              <select name="drag" id="drag" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="0.1">0.1</option>
+                <option value="0.2">0.2</option>
+                <option value="0.3">0.3</option>
+                <option value="0.4">0.4</option>
+                <option value="0.5">0.5</option>
+                <option value="0.6">0.6</option>
+                <option value="0.7">0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="0.9">0.9</option>
+                <option value="1">1.0</option>
+                <option value="1.1">1.1</option>
+                <option value="1.2">1.2</option>
+                <option value="1.3">1.3</option>
+                <option value="1.4">1.4</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -172,7 +238,27 @@
                 <option value="30">30 m</option>
                 <option value="50">50 m</option>
                 <option value="80">80 m</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="height" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Height of Tower:</label>
+
+              <select name="height" id="height" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="25">25 m</option>
+                <option value="50">50 m</option>
                 <option value="100">100 m</option>
+              </select>
+            </div>
+            <div class="col-lg-6 col-md-6" style="padding:5px;">
+              <label for="diameter" style="font-size: 14px; font-weight: bold; color: rgb(23, 44, 82);">Diameter of Tower:</label>
+
+              <select name="diameter" id="diameter" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
+                <option value="" selected disabled>--Please choose an option--</option>
+                <option value="2">2 m</option>
+                <option value="5">5 m</option>
+                <option value="7">7 m</option>
+                <option value="10">10 m</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -183,13 +269,6 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -221,6 +300,24 @@
         <div id="pow" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
         </div>
         <br>
+        <div id="sfactor" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="localtip" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="W" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="Q" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="copt" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="towersf" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
       </div>
     </section>
   </main>
@@ -232,7 +329,7 @@
       var wd = document.getElementById('wSpeed');
       var wSpeed = wd.value;
       var pd = document.getElementById('pSpeed');
-      var pSpeed = pd.value;
+      var pSpeed = pd.value * 0.10472;
       var lh = document.getElementById('length');
       var length = lh.value;
       var ns = document.getElementById('numBlades');
@@ -243,16 +340,105 @@
       var cd = (2 * Number(length)) / ((1/2) * Number(airDensity) * Number(area) * (Number(wSpeed) - (Number(wSpeed) - 2)) * (Number(wSpeed) - (Number(wSpeed) - 2)));
       var coef = Number(cd) * (Number(tip) - (2 * Number(tip) * Number(tip)) + (Number(tip) * Number(tip * Number(tip))));
       var pow = ((1 / 2) * Number(coef) * Number(airDensity) * Number(area) * Number(wSpeed) * Number(wSpeed) * Number(wSpeed)) / 1000;
-      var D = area.toFixed(2);
-      var E = speed.toFixed(2);
+      var J = area.toFixed(2);
+      var K = speed.toFixed(2);
       var F = tip.toFixed(1);
       var G = coef.toFixed(2);
       var H = pow.toFixed(2);
-      document.getElementById('area').innerHTML = 'Rotor Swept Area = ' + D + " " + 'm^2';
-      document.getElementById('speed').innerHTML = 'Linear speed of the propellor = ' + E + " " + 'm/s';
+      document.getElementById('area').innerHTML = 'Rotor Swept Area = ' + J + " " + 'm^2';
+      document.getElementById('speed').innerHTML = 'Linear speed of the propellor = ' + K + " " + 'm/s';
       document.getElementById('tip').innerHTML = 'Tip Speed Ratio = ' + F;
       document.getElementById('coef').innerHTML = 'Wind Turbine Coefficient = ' + G;
       document.getElementById('pow').innerHTML = 'Power Of The Turbine = ' + H + " " + 'kW';
+      
+      var ml = document.getElementById('material');
+      var material = ml.value;
+      if (material == 1)
+      {
+        var ultimate_stress = 2048.5;
+        var density = 1900;
+        var safety_factor = 1.5;
+        var E = 60;
+      }
+      else if (material == 2)
+      {
+        var ultimate_stress = 2260;
+        var density = 1600;
+        var safety_factor = 1.3;
+        var E = 228;
+      }
+      else if (material == 3)
+      {
+        var ultimate_stress = 90;
+        var density = 1168;
+        var safety_factor = 1.8;
+        var E = 3.1;
+      }
+      else if (material == 4)
+      {
+        var ultimate_stress = 586.5;
+        var density = 7870;
+        var safety_factor = 2;
+        var E = 200;
+
+      }
+      else if (material == 5)
+      {
+        var ultimate_stress = 100;
+        var density = 2700;
+        var safety_factor = 2;
+        var E = 70;
+      }
+
+      var A_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(wSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(ultimate_stress) * (0.066 * Number(length) + 0.082)));
+      var A_edge = ((Number(density) * 9.81 * Math.pow(Number(length), 2)) / ((Number(ultimate_stress) * (0.13 * Number(length) + 0.082)) - (Number(density) * 9.81 * Math.pow(Number(length), 2)))) * Number(A_flap);
+      var A_blade = 2 * (Number(A_flap) + Number(A_edge));
+      var x_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(wSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(A_flap) * (0.066 * Number(length) + 0.082)));
+      var x_edge = (1 / 2) * ((Number(density) * Number(A_blade) * 9.81 * Math.pow(Number(length), 2)) / (Number(ultimate_stress) * (0.13 * Number(length) + 0.082)))
+      var X = Math.pow(Number(x_edge), 2) + Math.pow(Number(x_flap), 2)
+      var X_max = Math.sqrt(Number(X));
+      
+      var sfactor = Number(ultimate_stress) / Number(X_max);
+      var I = sfactor.toFixed(2);
+      
+      document.getElementById('sfactor').innerHTML = 'Material Safety Factor = ' + I;
+
+      var lt = document.getElementById('lift');
+      var lift = lt.value;
+      var dg = document.getElementById('drag');
+      var drag = dg.value;
+      var ld = document.getElementById('locwSpeed');
+      var locwSpeed = ld.value;
+      var ht = document.getElementById('height');
+      var height = ht.value;
+      var dr = document.getElementById('diameter');
+      var diameter = dr.value;
+
+      var local_tip_ratio = 0.55 * ((Number(pSpeed) * Number(length)) / Number(wSpeed));
+      var hu = 1 / Number(local_tip_ratio);
+      var Beta = 90 - (2/3 * Math.atan(Number(hu)));
+      var copt = (2 * 3.14159 * Number(length) * 8 * Number(wSpeed)) / (Number(numBlades) * 9 * Number(lift) * Number(tip) * Number(locwSpeed));
+      var hash = 0.775 * ((Number(numBlades) * Number(copt)) / (1.1 * 3.14159 * Number(length)));
+      var cos = Math.cos(Number(Beta));
+      var alpha = 1 + ((4 * Math.pow(Number(cos), 2)) / (Number(hash) * Number(lift) * Math.sin(Number(Beta))));
+      var W = (Number(wSpeed) * (1 - Number(alpha))) / Math.cos(Number(Beta));
+      var L = 0.213 * Number(lift) * Number(airDensity) * Math.pow(Number(W), 2) * Number(copt) * Number(length);
+      var D = 0.213 * Number(drag) * Number(airDensity) * Math.pow(Number(W), 2) * Number(copt) * Number(length);
+      
+      var o = 0.495 * Math.cos(Number(Beta));
+      var p = -1 * Number(numBlades) / Number(o);
+      var q = Math.exp(Number(p));
+      var Q = (2 / 3.14159) * Math.acos(Number(q));
+      var Fx = 0.55 * Number(Q) * Number(airDensity) * Math.pow(Number(wSpeed), 2) * ((4 * Number(alpha)) * (1 - Number(alpha))) * 3.14159 * Math.pow(Number(length), 2);
+      var max_tower = Number(Fx) / (Number(height) * Number(diameter)); 
+      var tower_sf = Number(ultimate_stress) / Number(max_tower);
+
+      document.getElementById('towersf').innerHTML = 'Tower Safety Factor = ' + tower_sf;
+      document.getElementById('localtip').innerHTML = 'Local Tip Speed Ratio = ' + local_tip_ratio;
+      document.getElementById('W').innerHTML = 'Relative Wind Velocity = ' + W;
+      document.getElementById('Q').innerHTML = 'Tip Loss Correction Factor = ' + Q;
+      document.getElementById('copt').innerHTML = 'Optimum Chord Length = ' + copt;
+
     }
   </script>
 </body>

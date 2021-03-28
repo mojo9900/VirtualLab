@@ -312,6 +312,15 @@
         <div id="Q" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
         </div>
         <br>
+        <div id="L" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="D" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="T" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
         <div id="copt" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
         </div>
         <br>
@@ -432,12 +441,17 @@
       var Fx = 0.55 * Number(Q) * Number(airDensity) * Math.pow(Number(wSpeed), 2) * ((4 * Number(alpha)) * (1 - Number(alpha))) * 3.14159 * Math.pow(Number(length), 2);
       var max_tower = Number(Fx) / (Number(height) * Number(diameter)); 
       var tower_sf = Number(ultimate_stress) / Number(max_tower);
+      var ahash = (1 - (3 * Number(alpha))) / ((4 * Number(alpha)) -1);
+      var T = 2.2 * Number(Q) * Number(ahash) * (1 - Number(alpha)) * Number(airDensity) * Number(wSpeed) * Number(pSpeed) * Math.pow(Number(length), 4) * 3.14159;
 
       document.getElementById('towersf').innerHTML = 'Tower Safety Factor = ' + tower_sf;
       document.getElementById('localtip').innerHTML = 'Local Tip Speed Ratio = ' + local_tip_ratio;
       document.getElementById('W').innerHTML = 'Relative Wind Velocity = ' + W;
       document.getElementById('Q').innerHTML = 'Tip Loss Correction Factor = ' + Q;
       document.getElementById('copt').innerHTML = 'Optimum Chord Length = ' + copt;
+      document.getElementById('L').innerHTML = 'Lift Force = ' + L;
+      document.getElementById('D').innerHTML = 'Drag Force = ' + D;
+      document.getElementById('T').innerHTML = 'Torque = ' + T;
 
     }
   </script>

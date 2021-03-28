@@ -170,10 +170,16 @@
 
               <select name="pSpeed" id="pSpeed" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
                 <option value="" selected disabled>--Please choose an option--</option>
-                <option value="5">5 rpm</option>
-                <option value="10">10 rpm</option>
-                <option value="15">15 rpm</option>
-                <option value="20">20 rpm</option>
+                <option value="1">1 rad/s</option>
+                <option value="2">2 rad/s</option>
+                <option value="3">3 rad/s</option>
+                <option value="4">4 rad/s</option>
+                <option value="5">5 rad/s</option>
+                <option value="6">6 rad/s</option>
+                <option value="7">7 rad/s</option>
+                <option value="8">8 rad/s</option>
+                <option value="9">9 rad/s</option>
+                <option value="10">10 rad/s</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -235,9 +241,12 @@
 
               <select name="length" id="length" type="number" style="font-size: 12px; font-weight: bold; color: rgb(23, 44, 82);">
                 <option value="" selected disabled>--Please choose an option--</option>
+                <option value="10">10 m</option>
+                <option value="20">20 m</option>
                 <option value="30">30 m</option>
+                <option value="40">40 m</option>
                 <option value="50">50 m</option>
-                <option value="80">80 m</option>
+                <option value="60">60 m</option>
               </select>
             </div>
             <div class="col-lg-6 col-md-6" style="padding:5px;">
@@ -300,7 +309,10 @@
         <div id="pow" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
         </div>
         <br>
-        <div id="sfactor" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        <div id="sfactor_flap" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
+        </div>
+        <br>
+        <div id="sfactor_edge" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
         </div>
         <br>
         <div id="localtip" style="font-size: 16px; font-weight: bold; color: rgb(31, 78, 165);">
@@ -338,7 +350,7 @@
       var wd = document.getElementById('wSpeed');
       var wSpeed = wd.value;
       var pd = document.getElementById('pSpeed');
-      var pSpeed = pd.value * 0.10472;
+      var pSpeed = pd.value;
       var lh = document.getElementById('length');
       var length = lh.value;
       var ns = document.getElementById('numBlades');
@@ -404,13 +416,14 @@
       var A_blade = 2 * (Number(A_flap) + Number(A_edge));
       var x_flap = (8 / 81) * ((Number(airDensity) * Math.pow(Number(wSpeed), 2) * 3.14159 * Math.pow(Number(length), 3)) / (Number(A_flap) * (0.066 * Number(length) + 0.082)));
       var x_edge = (1 / 2) * ((Number(density) * Number(A_blade) * 9.81 * Math.pow(Number(length), 2)) / (Number(ultimate_stress) * (0.13 * Number(length) + 0.082)))
-      var X = Math.pow(Number(x_edge), 2) + Math.pow(Number(x_flap), 2)
-      var X_max = Math.sqrt(Number(X));
       
-      var sfactor = Number(ultimate_stress) / Number(X_max);
-      var I = sfactor.toFixed(2);
+      var sfactor_flap = Number(ultimate_stress) / Number(x_flap);
+      var sfactor_edge = Number(ultimate_stress) / Number(x_edge);
+      var I = sfactor_flap.toFixed(2);
+      var O = sfactor_edge.toFixed(2);
       
-      document.getElementById('sfactor').innerHTML = 'Material Safety Factor = ' + I;
+      document.getElementById('sfactor_flap').innerHTML = 'Material Safety Factor_Flap = ' + I;
+      document.getElementById('sfactor_edge').innerHTML = 'Material Safety Factor_Edge = ' + O;
 
       var lt = document.getElementById('lift');
       var lift = lt.value;

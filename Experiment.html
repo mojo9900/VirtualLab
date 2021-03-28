@@ -374,8 +374,15 @@
       var area = 3.14159265 * Number(length) * Number(length);
       var speed = Number(pSpeed) * Number(length);
       var tip = Number(speed) / Number(locwSpeed);
-      var cd = (2 * Number(length)) / ((1/2) * Number(airDensity) * Number(area) * (Number(locwSpeed) - (Number(locwSpeed) - 2)) * (Number(locwSpeed) - (Number(locwSpeed) - 2)));
-      var coef = Number(cd) * (Number(tip) - (2 * Number(tip) * Number(tip)) + (Number(tip) * Number(tip * Number(tip))));
+      var a = 0.593 * Number(tip);
+      var b = 1.32 * (Number(tip) - (Number(numBlades) / 20)) * (Number(tip) - (Number(numBlades) / 20));
+      var c = Number(pSpeed) * Math.pow(Number(numBlades), 0.6667);
+      var d = Number(b) / Number(c);
+      var e = Number(a) / (Number(tip) + Number(d));
+      var f = 0.57 * Math.pow(Number(tip), 2);
+      var g = 1 + (1 / (2 * Number(numBlades)));
+      var h = Number(f) / (76 * Number(g));
+      var coef = Number(e) - Number(h);
       var pow = ((1 / 2) * Number(coef) * Number(airDensity) * Number(area) * Number(locwSpeed) * Number(locwSpeed) * Number(locwSpeed)) / 1000;
       var J = area.toFixed(2);
       var K = speed.toFixed(2);
